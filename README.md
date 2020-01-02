@@ -7,18 +7,11 @@ The admin will inform the delivery boy to deliver the ordered products.
 Enables computer shops to expand their business through internet.
 
 Features:
-User Registration
-User Login
-Display Product
-Search Product
-Search Category
-Add to Cart
-Payment
-Display order(user)
-Admin Login
-Add product
-Delete Product
-Display order(Admin)
+User Registration, User Login, Display Product, Search Product, Search Category, Add to CartPayment, Display order(user), Admin Login, Add product, Delete Product, Display order(Admin).
+
+Platform: Microsoft Visual Studio 2010
+Database Connection: SQL Server 
+
 
 
 
