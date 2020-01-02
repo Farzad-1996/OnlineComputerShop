@@ -1,0 +1,220 @@
+﻿<%@ Master Language="C#" CodeFile="user.master.cs" Inherits="user_user" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Computer Shop</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<!--[if lte IE 6]><link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" /><![endif]-->
+<script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
+<script src="js/jquery-func.js" type="text/javascript"></script>
+</head>
+<body  style="background-image:url('css/images/shopback.jpg')" >
+<!-- Shell -->
+<form id="f1" runat="server">
+
+<div class="shell">
+  <!-- Header -->
+  <div id="header">
+    <h1 id="logo"><a href="#">Computer Shop</a></h1>
+    <!-- Cart -->
+    <div id="cart"> <a href="view_cart.aspx" class="cart-link">Your Shopping Cart</a>
+      <div class="cl">&nbsp;</div>
+      <span>Total Items: <asp:Label ID="carttotitem" runat="server" Text="0"></asp:Label> &nbsp;&nbsp; <span>Cost: <asp:Label ID="carttotprice" runat="server" Text="0"></asp:Label></span> </div>
+    <!-- End Cart -->
+    <!-- Navigation -->
+    <div id="navigation">
+      <ul>
+
+       
+        <li><a href="#">My Account</a></li>
+        <li><a href="display_item.aspx">The Store</a></li>
+        <li><a href="registration.aspx">Registration</a></li>
+
+
+        <%
+            
+            if (Session["user"] == null)
+            {
+                %>
+                <li><a href="login.aspx">Login</a></li>
+                <% 
+            }
+
+            else
+            {
+                %>
+                 <li><a href="display_order.aspx">Display Order</a></li>
+                <li><a href="logout.aspx">Logout</a></li>
+                <% 
+            }
+            
+            
+             %>
+
+        
+
+      </ul>
+    </div>
+    <!-- End Navigation -->
+  </div>
+  <!-- End Header -->
+  <!-- Main -->
+  <div id="main">
+    <div class="cl">&nbsp;</div>
+    <!-- Content -->
+    <div id="content">
+      <!-- Content Slider -->
+      <div id="slider" class="box">
+        <div id="slider-holder">
+          <ul>
+            <li><a href="#"><img src="css/images/slide1.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="css/images/slide2.jpeg" alt="" /></a></li>
+            <li><a href="#"><img src="css/images/slide3.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="css/images/slide4.jpg" alt="" /></a></li>
+          </ul>
+        </div>
+        <div id="slider-nav"> <a href="#" class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> </div>
+      </div>
+      <!-- End Content Slider -->
+      <!-- Products -->
+      <div class="products">
+	  
+        <!-- THIS IS CONTENT AREA -->
+<asp:ContentPlaceHolder ID="c1" runat="server"></asp:ContentPlaceHolder>
+      </div>
+      <!-- End Products -->
+    </div>
+    <!-- End Content -->
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <!-- Search -->
+      <div class="box search">
+        <h2>Search by <span></span></h2>
+        <div class="box-content">
+        
+            <br>
+            <label>Product Name</label>
+            <input type="text" class="field" id="searchtextbox"/>
+
+            <input type="button" class="search-submit" value="Search" onclick="search();"/>
+            <p> please enter item name inside the textbox</p>
+          
+        </div>
+      </div>
+      <!-- End Search -->
+      <!-- Categories -->
+      <div class="box categories">
+        <h2>Categories <span></span></h2>
+        <div class="box-content">
+          <ul>
+            
+            
+            <asp:DataList ID="dd" runat="server">
+            <ItemTemplate>
+            <li><a href="display_item.aspx?category=<%# Eval("product_category")%>"><%#Eval("product_category") %></a></li>
+            </ItemTemplate>
+            </asp:DataList>
+
+          </ul>
+        </div>
+      </div>
+      <!-- End Categories -->
+    </div>
+    <!-- End Sidebar -->
+    <div class="cl">&nbsp;</div>
+  </div>
+  <!-- End Main -->
+  <!-- Side Full -->
+  <div class="side-full">
+    <!-- More Products -->
+    <div class="more-products">
+      <div class="more-products-holder">
+        <ul>
+          <li><a href="#"><img src="css/images/small1.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small2.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small3.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small4.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small5.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small6.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small7.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small1.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small2.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small3.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small4.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small5.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small6.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small7.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small1.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small2.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small3.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small4.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small5.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="css/images/small6.jpg" alt="" /></a></li>
+          <li class="last"><a href="#"><img src="css/images/small7.jpg" alt="" /></a></li>
+        </ul>
+      </div>
+      <div class="more-nav"> <a href="#" class="prev">previous</a> <a href="#" class="next">next</a> </div>
+    </div>
+    <!-- End More Products -->
+    <!-- Text Cols -->
+    <div class="cols">
+      <div class="cl">&nbsp;</div>
+      <div class="col">
+        <h3 class="ico ico1">Shipping</h3>
+        <p>Unless otherwise noted, shipments are made from the nearest warehouse with available stock. All deliveries are made via courier and are subject to the courier's normal delivery schedules. Shipments within the same province are often delivered the next business day.</p>
+       
+      </div>
+      <div class="col">
+        <h3 class="ico ico2">Contact</h3>
+        <p><strong>Our Contacts</strong><br/>
+
+Ahsanullah University of Science and Technology<br/>
+Tejgaon,Dhaka.<br/>
+Mobile:+01955667188<br/>
+Mobile:+01679451920<br/>
+Mobile:+01741809216<br/>
+
+</p>
+        
+      </div>
+      <div class="col">
+        <h3 class="ico ico3">Products</h3>
+        <p>That Computer Shop offers a wide range of PC products including Laptops, Desktops printers and accessories. Whether it's basic home computer, Business system or Gaming machine we can build it.</p>
+       
+      </div>
+      <div class="col col-last">
+        <h3 class="ico ico4">Delivery</h3>
+        <p>We now offer free pickup and delivery service.  We’ll pick up the computer, fix it at our shop, then deliver it and reconnect everything for you.  And yes, the free checkup still applies.</p>
+        
+      </div>
+      <div class="cl">&nbsp;</div>
+    </div>
+    <!-- End Text Cols -->
+  </div>
+  <!-- End Side Full -->
+  <!-- Footer -->
+  <div id="footer">
+    <p class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </p>
+    <p class="right"> &copy; 2018 Computer Shop. Design by <a href="#"><strong >Aust Troopers</strong> </a> </p>
+  </div>
+  <!-- End Footer -->
+</div>
+<!-- End Shell -->
+</form>
+
+<script type="text/javascript">
+
+    function search() {
+
+        window.location = "display_item.aspx?search=" + document.getElementById("searchtextbox").value;
+
+    }
+
+</script>
+
+</body>
+</html>
+
